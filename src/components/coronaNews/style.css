@@ -1,0 +1,19 @@
+.news {
+  background-color: aliceblue;
+  margin: 2em;
+  padding: 0.5em 2em;
+}
+
+.news-description,
+.news-activity {
+  padding: 0 2em;
+}
+
+.news-title {
+  text-decoration: none;
+  color: black;
+}
+
+.news-title :hover {
+  color: blue;
+}
