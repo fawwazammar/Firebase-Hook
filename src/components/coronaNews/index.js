@@ -1,13 +1,33 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import app from '../../services/firebase';
 import 'firebase/database';
-import './style.css';
 
-const convertTanggal = (tanggal) => {
-  const tanggalLokal = new Date(tanggal).toLocaleString('id-ID', {
-    dateStyle: 'full',
-  });
-  return tanggalLokal;
+const Activity = (props) => {
+  const { data } = props;
+  return (
+    <div>
+      {/* <a href={data.url}> */}
+      <h4>{data.title}</h4>
+      {/* </a> */}
+      <p>{data.desc}</p>
+    </div>
+  );
+};
+
+const NewsPerDate = (props) => {
+  const { data } = props;
+
+  return (
+    <div>
+      <Link to={`/infoCorona/${data.date}`}>
+        <h3>{data.date}</h3>
+      </Link>
+      {data.activity.map((news) => {
+        return <Activity key={news.url} data={news} />;
+      })}
+    </div>
+  );
 };
 
 const CoronaNews = () => {
@@ -24,38 +44,14 @@ const CoronaNews = () => {
     });
   }, []);
 
-  console.log(news);
-
   return (
-    <div>
-      <h2>data corona</h2>
+    <div className="center_view">
       {isLoading ? (
         <p>loading</p>
       ) : (
-        <div>
-          {news.map((newsItem) => {
-            return (
-              <div className="news">
-                <h3>{convertTanggal(newsItem.date)}</h3>
-                {newsItem.activity.map((activityItem) => {
-                  return (
-                    <div className="news-activity">
-                      <a
-                        href={activityItem.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="news-title"
-                      >
-                        <h4>{activityItem.title}</h4>
-                      </a>
-                      <p className="news-description">{activityItem.desc}</p>
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })}
-        </div>
+        news.map((newsPerDate) => {
+          return <NewsPerDate key={newsPerDate.date} data={newsPerDate} />;
+        })
       )}
     </div>
   );

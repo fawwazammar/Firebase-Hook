@@ -1,0 +1,15 @@
+.logout {
+  border-radius: 4px;
+  margin: 20px;
+  background-color: #e41b1be3;
+  width: fit-content;
+  color: white;
+  font-weight: bold;
+  padding: 20px;
+  border: none;
+  text-align: center;
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}

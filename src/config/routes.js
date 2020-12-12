@@ -1,4 +1,13 @@
-import { Home, Profile, Contact, Login, ProfileId, InfoCorona } from '../pages';
+import {
+  Home,
+  Profile,
+  Contact,
+  Login,
+  ProfileId,
+  InfoCorona,
+  DetailDate,
+  Produk,
+} from '../pages';
 
 const routes = [
   {
@@ -27,9 +36,19 @@ const routes = [
     isPublic: true,
   },
   {
+    path: '/infoCorona/:dateId',
+    component: DetailDate,
+    isPublic: true,
+  },
+  {
     path: '/infoCorona',
     component: InfoCorona,
     isPublic: true,
+  },
+  {
+    path: '/produk',
+    component: Produk,
+    isPublic: false,
   },
   {
     path: '/',

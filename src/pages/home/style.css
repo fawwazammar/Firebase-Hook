@@ -3,3 +3,13 @@
 .pageHome-img2 {
   width: 100%;
 }
+
+.logout {
+  border-radius: 4px;
+  margin: 20px;
+  background-color: #e41b1be3;
+  padding: 2px 20px;
+  width: fit-content;
+  color: white;
+  font-weight: bold;
+}
